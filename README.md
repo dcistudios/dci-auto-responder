@@ -1,7 +1,7 @@
 # <p align="center">🤖 DCI Auto Responder</p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&lines=DCI+Auto+Responder;Intelligent+Discord+Automation;Built+by+DCI+Studios;Fast+%7C+Reliable+%7C+Configurable" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=38BDF8&center=true&vCenter=true&width=500&lines=DCI+Auto+Responder;Discord+Away+Message+Automation;Built+by+DCI+Studios;Fast+%7C+Reliable+%7C+Configurable" />
 </p>
 
 <p align="center">
@@ -15,20 +15,21 @@
 
 ## 📖 Overview
 
-**DCI Auto Responder** is a lightweight Discord DM automation tool built and maintained by **DCI Studios**. When someone slides into your DMs, it automatically replies with a custom away message — with a configurable cooldown so users don’t get spammed.
+**DCI Auto Responder** is a lightweight Discord selfbot away-message tool built and maintained by **DCI Studios**. Run it on your own account — when someone DMs you, it automatically replies with your custom away message, with a per-user cooldown so nobody gets spammed.
 
-> 🔒 This project is part of DCI Studios’ private-first development model and is released as an official public tool.
+> ⚠️ This is a **selfbot** — it runs on your personal Discord account using your user token, not a bot token.  
+> Use responsibly. Self-botting is against Discord’s ToS; you assume all risk.
 
 -----
 
 ## ✨ Features
 
-- 📨 Responds automatically to incoming Discord DMs
-- ✏️ Fully customizable message via `message.txt`
-- ⏱ Per-user cooldown to prevent repeat responses
-- 🔇 Ignores messages from itself and non-DM channels
+- 📨 Auto-replies to incoming DMs on your own account
+- ✏️ Customizable away message via `message.txt`
+- ⏱ Per-user cooldown to avoid spamming the same person
+- 🔇 Ignores your own messages and non-DM channels
 - 🪵 Console logging with timestamps for every auto-response
-- ⚙️ Simple `.env` configuration — no code changes needed
+- ⚙️ Simple `.env` setup — no code changes needed
 
 -----
 
@@ -40,7 +41,7 @@
 
 ```
 Python
-discord.py
+discord.py-self
 python-dotenv
 ```
 
@@ -50,33 +51,34 @@ python-dotenv
 
 ```bash
 # Clone the repository
-git clone https://github.com/gangbusinessinquires-rgb/dci-auto-responder.git
+git clone https://github.com/dcistudios/dci-auto-responder.git
 
 # Navigate into the project
 cd dci-auto-responder
 
 # Install dependencies
-pip install discord.py python-dotenv
+pip install discord.py-self python-dotenv
 ```
 
 -----
 
 ## ⚙️ Configuration
 
-Create a `.env` file in the root directory:
+Rename `.env.example` to `.env` and fill in your values:
 
 ```env
-DISCORD_TOKEN=your_bot_token_here
+DISCORD_TOKEN=your_user_token_here
 COOLDOWN_MINUTES=30
 ```
 
 |Variable          |Description                                  |Default |
 |------------------|---------------------------------------------|--------|
-|`DISCORD_TOKEN`   |Your Discord bot token                       |Required|
+|`DISCORD_TOKEN`   |Your Discord **user token**                  |Required|
 |`COOLDOWN_MINUTES`|Minutes before re-responding to the same user|`30`    |
 
 
-> ⚠️ Never share or commit your `.env` file. Add it to `.gitignore`.
+> ⚠️ Never share or commit your `.env` file — it’s already in `.gitignore`.  
+> Your user token gives full access to your account. Keep it private.
 
 -----
 
@@ -98,12 +100,12 @@ If `message.txt` is not found, the bot falls back to the default message above.
 python main.py
 ```
 
-The bot will log in and begin watching for DMs automatically. Each auto-response is logged to the console with a timestamp and the recipient’s username.
+The selfbot will log in as you and begin watching for DMs. Each auto-response is logged to the console with a timestamp.
 
 ```
-Logged in as YourBot#0000
+Logged in as YourName#0000
 Auto-responder active.
-[14:23:01] Auto-responded to SomeUser#1234
+[14:23:01] Auto-responded to SomeUser
 ```
 
 -----
