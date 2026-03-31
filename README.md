@@ -7,7 +7,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Active-10B981?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Platform-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" />
-  <img src="https://img.shields.io/badge/Runtime-Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Runtime-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Organization-DCI_Studios-38BDF8?style=for-the-badge" />
 </p>
 
@@ -15,7 +15,7 @@
 
 ## 📖 Overview
 
-**DCI Auto Responder** is a lightweight Discord automation tool built and maintained by **DCI Studios**. It handles automated message responses within Discord servers — keeping communities engaged and inquiries answered without manual intervention.
+**DCI Auto Responder** is a lightweight Discord DM automation tool built and maintained by **DCI Studios**. When someone slides into your DMs, it automatically replies with a custom away message — with a configurable cooldown so users don’t get spammed.
 
 > 🔒 This project is part of DCI Studios’ private-first development model and is released as an official public tool.
 
@@ -23,26 +23,25 @@
 
 ## ✨ Features
 
-- ⚡ Fast, event-driven auto response system
-- 🧠 Keyword and trigger-based matching
-- 🛠 Easy configuration via JSON
-- 📨 Supports DM and server channel responses
-- 🔄 Hot-reloadable response rules
-- 🚀 Lightweight and low resource usage
+- 📨 Responds automatically to incoming Discord DMs
+- ✏️ Fully customizable message via `message.txt`
+- ⏱ Per-user cooldown to prevent repeat responses
+- 🔇 Ignores messages from itself and non-DM channels
+- 🪵 Console logging with timestamps for every auto-response
+- ⚙️ Simple `.env` configuration — no code changes needed
 
 -----
 
 ## 🧰 Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=js,nodejs,github" />
+  <img src="https://skillicons.dev/icons?i=py,github" />
 </p>
 
 ```
-JavaScript
-Node.js
-Discord.js
-JSON
+Python
+discord.py
+python-dotenv
 ```
 
 -----
@@ -57,42 +56,55 @@ git clone https://github.com/gangbusinessinquires-rgb/dci-auto-responder.git
 cd dci-auto-responder
 
 # Install dependencies
-npm install
+pip install discord.py python-dotenv
 ```
 
 -----
 
 ## ⚙️ Configuration
 
-Edit the `config.json` file to set your bot token and define auto-response triggers:
+Create a `.env` file in the root directory:
 
-```json
-{
-  "token": "YOUR_BOT_TOKEN",
-  "responses": [
-    {
-      "trigger": "hello",
-      "response": "Hey there! How can I help you today?"
-    },
-    {
-      "trigger": "support",
-      "response": "Please open a ticket or visit our forums at https://forums.dcistudios.xyz"
-    }
-  ]
-}
+```env
+DISCORD_TOKEN=your_bot_token_here
+COOLDOWN_MINUTES=30
 ```
 
-> ⚠️ Never share or commit your bot token publicly.
+|Variable          |Description                                  |Default |
+|------------------|---------------------------------------------|--------|
+|`DISCORD_TOKEN`   |Your Discord bot token                       |Required|
+|`COOLDOWN_MINUTES`|Minutes before re-responding to the same user|`30`    |
+
+
+> ⚠️ Never share or commit your `.env` file. Add it to `.gitignore`.
+
+-----
+
+## ✏️ Custom Message
+
+Edit `message.txt` to set your away message:
+
+```
+Hey! I'm not around right now, I'll get back to you soon.
+```
+
+If `message.txt` is not found, the bot falls back to the default message above.
 
 -----
 
 ## 🚀 Usage
 
 ```bash
-node index.js
+python main.py
 ```
 
-The bot will connect to Discord and begin listening for configured triggers automatically.
+The bot will log in and begin watching for DMs automatically. Each auto-response is logged to the console with a timestamp and the recipient’s username.
+
+```
+Logged in as YourBot#0000
+Auto-responder active.
+[14:23:01] Auto-responded to SomeUser#1234
+```
 
 -----
 
