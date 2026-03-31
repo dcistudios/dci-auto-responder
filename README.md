@@ -36,7 +36,7 @@
 ## 🧰 Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=py,github" />
+  <img src="https://skillicons.dev/icons?i=py,github,git" />
 </p>
 
 ```
