@@ -97,15 +97,15 @@ If `message.txt` is not found, the bot falls back to the default message above.
 ## 🚀 Usage
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 The selfbot will log in as you and begin watching for DMs. Each auto-response is logged to the console with a timestamp.
 
 ```
-Logged in as YourName#0000
+Logged in as carter.accs#0000
 Auto-responder active.
-[14:23:01] Auto-responded to SomeUser
+[14:23:01] Auto-responded to unknown_preston
 ```
 
 -----
